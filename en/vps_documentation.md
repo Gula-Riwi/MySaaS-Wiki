@@ -2,7 +2,7 @@
 title: vps_documentation
 description: 
 published: true
-date: 2025-11-27T20:41:45.904Z
+date: 2025-11-27T20:41:19.822Z
 tags: 
 editor: markdown
 dateCreated: 2025-11-26T22:37:15.897Z
@@ -231,117 +231,6 @@ curl -I https://docs.gula.crudzaso.com
 ```
 
 ---
-
-## 7. Configuración de Bases de Datos Centralizadas
-
-### 7.1. Estructura del servicio de bases de datos
-
-Crear directorio para las bases de datos centralizadas:
-
-```bash
-mkdir -p /projects/databases
-cd /projects/databases
-```
-
-### 7.2. Archivo docker-compose.yml para PostgreSQL y Redis
-
-```yaml
-version: "3.5"
-
-services:
-  central-postgres:
-    image: postgres:15-alpine
-    container_name: central-postgres
-    hostname: central-postgres
-    environment:
-      - POSTGRES_PASSWORD=${GLOBAL_POSTGRES_PASS}
-    ports:
-      - "5432:5432"
-    volumes:
-      - ./postgres_data:/var/lib/postgresql/data
-    networks:
-      - mysaas-agent
-    restart: unless-stopped
-
-    deploy:
-      resources:
-        limits:
-          memory: 1280m
-    logging:
-      options:
-        max-size: "20m"
-        max-file: "5"
-
-  central-redis:
-    image: redis:alpine
-    container_name: central-redis
-    hostname: central-redis
-    command: redis-server --requirepass ${GLOBAL_REDIS_PASS}
-    volumes:
-      - ./redis_data:/data
-    networks:
-      - mysaas-agent
-    restart: unless-stopped
-
-    deploy:
-      resources:
-        limits:
-          memory: 256m
-    logging:
-      options:
-        max-size: "20m"
-        max-file: "5"
-
-networks:
-  mysaas-agent:
-    external: true
-```
-
-### 7.3. Configuración de variables de entorno
-
-Crear archivo `.env` en el directorio `/projects/databases/`:
-
-```bash
-# Variables de base de datos
-GLOBAL_POSTGRES_PASS=tu_password_seguro_postgres
-GLOBAL_REDIS_PASS=tu_password_seguro_redis
-```
-
-**Asegurar el archivo .env:**
-```bash
-chmod 600 .env
-```
-
-### 7.4. Iniciar los servicios de base de datos
-
-```bash
-# Desde el directorio /root/projects/databases/
-docker compose up -d
-
-# Verificar que los contenedores estén ejecutándose
-docker ps
-
-# Ver logs de PostgreSQL
-docker logs central-postgres
-
-# Ver logs de Redis
-docker logs central-redis
-```
-
-### 7.5. Conexión a las bases de datos
-
-**PostgreSQL:**
-- **Host:** `central-postgres` (desde otros contenedores) o `localhost` (desde el host)
-- **Puerto:** `5432`
-- **Usuario:** `postgres`
-- **Contraseña:** Valor de `GLOBAL_POSTGRES_PASS`
-
-**Redis:**
-- **Host:** `central-redis` (desde otros contenedores) o `localhost` (desde el host)
-- **Puerto:** `6379` (puerto por defecto)
-- **Contraseña:** Valor de `GLOBAL_REDIS_PASS`
-
-## Comandos Útiles de Administración
 
 ### Nginx
 
