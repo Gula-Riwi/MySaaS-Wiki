@@ -8,11 +8,11 @@ editor: markdown
 dateCreated: 2025-11-26T22:37:15.897Z
 ---
 
-# Documentación VPS
+# VPS Documentation
 
-## 1. Asignación de Permisos de Usuario
+## 1. Assigning User Permissions
 
-Se asignaron permisos root a cada integrante del equipo con los siguientes comandos:
+Root permissions were assigned to each team member using the following commands:
 
 ```bash
 adduser nombre_integrante
@@ -20,74 +20,74 @@ adduser nombre_integrante
 sudo usermod -aG sudo nombre_integrante
 ```
 
-**Verificación de permisos:**
-Para verificar los permisos de cada usuario, conectarse via SSH y ejecutar:
+**Permissions verification:**
+To verify the permissions of each user, connect via SSH and run:
 
 ```bash
 ssh nombre_integrante@<IP_del_servidor>
 sudo whoami
 ```
 
-Si el resultado es `root`, los permisos están correctamente configurados.
+If the result is `root`, the permissions are correctly configured.
 
 ---
 
-## 2. Configuración de Memoria Swap y Swappiness
+## 2. Swap Memory and Swappiness Configuration
 
-Colchón de memoria para el VPS en caso de estar saturado por la memoria RAM.
+A swap cushion for the VPS in case the RAM becomes saturated.
 
 ```bash
-# 1. Crear el archivo swap de 2GB
+# 1. Create a 2GB swap file
 sudo fallocate -l 2G /swapfile
 
-# 2. Ajustar permisos solo para root
+# 2. Set permissions only for root
 sudo chmod 600 /swapfile
 
-# 3. Formatear el archivo como swap
+# 3. Format the file as swap
 sudo mkswap /swapfile
 
-# 4. Activar el swap temporalmente
+# 4. Enable swap temporarily
 sudo swapon /swapfile
 
-# 5. Hacer el swap persistente
+# 5. Make swap persistent
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
-# 6. Ajustar swappiness a 10 (temporalmente)
+# 6. Set swappiness to 10 (temporary)
 sudo sysctl vm.swappiness=10
 
-# 7. Hacer el swappiness permanente
+# 7. Make swappiness permanent
 echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
 
-# 8. Reiniciar el sistema para aplicar todos los cambios
+# 8. Reboot the system to apply changes
 sudo reboot
 ```
 
-**Verificación:**
+**Verification:**
 ```bash
-# Verificar que el swap esté activo
+# Verify that swap is active
 sudo swapon --show
 
-# Verificar el valor de swappiness
+# Check the current swappiness value
 cat /proc/sys/vm/swappiness
 ```
 
 ---
 
-## 3. Instalación de Docker y Docker Compose
+## 3. Installing Docker and Docker Compose
 
 ```bash
-# 1. Descargar el script de instalación de Docker
+# 1. Download Docker install script
 curl -fsSL https://get.docker.com -o get-docker.sh
 
-# 2. Ejecutar el script de instalación
+# 2. Run the install script
 sudo sh get-docker.sh
 
-# 3. Instalar Docker Compose Plugin
+# 3. Install Docker Compose Plugin
 sudo apt install docker-compose-plugin -y
 ```
 
-**Dar permisos Docker a usuarios:**
-Para evitar tener que usar `sudo` con cada comando de Docker:
+**Grant Docker permissions to users:**
+To avoid using `sudo` for every Docker command:
 
 ```bash
 sudo usermod -aG docker nombre_integrante
@@ -95,7 +95,7 @@ sudo usermod -aG docker nombre_integrante
 
 **Nota:** El usuario debe cerrar sesión y volver a iniciar sesión para que los cambios surtan efecto.
 
-**Verificación:**
+**Verification:**
 ```bash
 docker --version
 docker compose version
@@ -103,18 +103,18 @@ docker compose version
 
 ---
 
-## 4. Instalación de Nginx y Certbot
+## 4. Installing Nginx and Certbot
 
 ```bash
-# Instalar Nginx
+# Install Nginx
 sudo apt update
 sudo apt install nginx -y
 
-# Instalar Certbot para certificados SSL
+# Install Certbot for SSL certificates
 sudo apt install certbot python3-certbot-nginx -y
 ```
 
-**Verificación:**
+**Verification:**
 ```bash
 sudo systemctl status nginx
 nginx -v
@@ -123,21 +123,21 @@ certbot --version
 
 ---
 
-## 5. Despliegues Optimizados
+## 5. Optimized Deployments
 
-### 5.1. Creación de Red Compartida
+### 5.1. Create a Shared Docker Network
 
-Crear una red Docker compartida para todo el proyecto:
+Create a shared Docker network for the entire project:
 
 ```bash
-docker network create mysaas-agent
+docker network create meetlines-agent
 ```
 
 Esta red permite que los contenedores de diferentes servicios se comuniquen entre sí.
 
-### 5.2. Estructura de Carpetas del Proyecto
+### 5.2. Recommended Project Folder Structure
 
-Organización recomendada para los diferentes servicios:
+Recommended organization for different services:
 
 ```
 /root/projects/
@@ -147,7 +147,7 @@ Organización recomendada para los diferentes servicios:
 ├── monitoring/
 │   ├── docker-compose.yml        # Grafana, Prometheus, Alertmanager
 │   └── prometheus/
-│       └── prometheus.yml        # Configuración de Prometheus
+│       └── prometheus.yml        # Prometheus configuration
 │
 ├── tools/
 │   └── docker-compose.yml        # Portainer (gestión de contenedores)
@@ -162,22 +162,22 @@ Organización recomendada para los diferentes servicios:
         └── ...                   # Código fuente del frontend
 ```
 
-**Ventajas de esta estructura:**
-- Separación de servicios por responsabilidad
-- Fácil mantenimiento y escalabilidad
-- Cada servicio puede reiniciarse independientemente
+**Advantages of this structure:**
+- Separation of services by responsibility
+- Easier maintenance and scalability
+- Each service can restart independently
 
 ---
 
-## 6. Configuración de Nginx para Wiki.js
+## 6. Nginx Configuration for Wiki.js
 
-### 6.1. Crear el archivo de configuración
+### 6.1. Create the configuration file
 
 ```bash
 sudo nano /etc/nginx/sites-available/docs.gula.crudzaso.com
 ```
 
-**Contenido del archivo:**
+**Configuration file content:**
 
 ```nginx
 server {
@@ -198,35 +198,35 @@ server {
 }
 ```
 
-### 6.2. Activar la configuración
+### 6.2. Activate the configuration
 
 ```bash
-# Crear enlace simbólico en sites-enabled
+# Create symbolic link in sites-enabled
 sudo ln -s /etc/nginx/sites-available/docs.gula.crudzaso.com /etc/nginx/sites-enabled/
 
-# Verificar sintaxis de configuración
+# Verify configuration syntax
 sudo nginx -t
 
-# Recargar Nginx
+# Reload Nginx
 sudo systemctl restart nginx
 ```
 
-### 6.3. Configurar SSL con Certbot
+### 6.3. Configure SSL with Certbot
 
 ```bash
-# Obtener certificado SSL automáticamente
+# Obtain SSL certificate automatically
 sudo certbot --nginx -d docs.gula.crudzaso.com
 
-# Certbot modificará automáticamente la configuración de Nginx para usar HTTPS
+# Certbot will automatically modify the Nginx configuration to use HTTPS
 ```
 
-### 6.4. Verificación
+### 6.4. Verification
 
 ```bash
-# Verificar que el dominio resuelve correctamente
+# Verify that the domain resolves correctly
 ping docs.gula.crudzaso.com
 
-# Verificar el certificado SSL
+# Verify the SSL certificate
 curl -I https://docs.gula.crudzaso.com
 ```
 
@@ -235,33 +235,33 @@ curl -I https://docs.gula.crudzaso.com
 ### Nginx
 
 ```bash
-# Verificar que las sintaxys de las configuraciones esten correctamente
+# Verify Nginx configuration syntax
 sudo nginx -t
 
-# Recargar configuración sin detener el servicio
+# Reload configuration without stopping the service
 sudo systemctl reload nginx
 
-# Reiniciar Nginx
+# Restart Nginx
 sudo systemctl restart nginx
 
-# Ver logs de Nginx
+# Tail Nginx logs
 sudo tail -f /var/log/nginx/error.log
 sudo tail -f /var/log/nginx/access.log
 ```
 
-### Sistema
+### System
 
 ```bash
-# Ver uso de memoria y swap
+# Show memory and swap usage
 free -h
 
-# Ver uso de disco
+# Show disk usage
 df -h
 
-# Ver procesos que más consumen recursos
+# Show top resource consuming processes
 htop
 
-# Ver puertos en uso
+# Show open ports
 sudo netstat -tulpn
 ```
 
