@@ -1,3 +1,13 @@
+---
+title: vps_documentation
+description: 
+published: true
+date: 2025-11-27T20:41:45.904Z
+tags: 
+editor: markdown
+dateCreated: 2025-11-26T22:37:15.897Z
+---
+
 # Documentación VPS
 
 ## 1. Asignación de Permisos de Usuario
