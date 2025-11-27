@@ -1,0 +1,127 @@
+<!--
+title: homepage
+description: 
+published: true
+date: 2025-11-27T22:01:48.859Z
+tags: 
+editor: code
+dateCreated: 2025-11-27T22:01:48.859Z
+-->
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MeetLines — Documentación</title>
+  <meta name="description" content="Documentación oficial de MeetLines - Arquitectura, despliegue, guía de inicio y más.">
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--accent:#4f46e5;--muted:#94a3b8;--glass: rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:linear-gradient(180deg,#071432, #0b1220 50%); color:#e6eef8}
+    .container{max-width:1100px;margin:3rem auto;padding:1.5rem}
+    header{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .logo{display:flex;align-items:center;gap:.75rem}
+    .logo svg{width:44px;height:44px}
+    h1{font-size:1.8rem;margin:0}
+    p.lead{margin:.25rem 0 1rem;color:var(--muted)}
+    nav a{color:var(--muted);text-decoration:none;margin-left:1rem}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:2rem;align-items:center;margin-top:2rem}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.04); padding:1.25rem;border-radius:12px}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+    .feature h3{margin:.25rem 0;color:#fff}
+    .cta{display:flex;gap:1rem;margin-top:1rem}
+    .button{background:var(--accent);color:#fff;border:none;padding:.9rem 1.1rem;border-radius:10px;cursor:pointer;text-decoration:none}
+    .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);padding:.9rem;border-radius:10px}
+    footer{margin-top:3rem;text-align:center;color:var(--muted);font-size:.9rem}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.features{grid-template-columns:1fr 1fr}.container{margin:2rem auto}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <rect width="48" height="48" rx="10" fill="#111827" />
+          <g transform="translate(6,6)">
+            <rect x="2" y="2" width="20" height="20" rx="4" fill="#111827" stroke="#3f83f8" stroke-width="1.6" />
+            <path d="M6 10h8M6 14h10" stroke="#60a5fa" stroke-width="1.6" stroke-linecap="round"/>
+          </g>
+        </svg>
+        <div>
+          <h1>MeetLines</h1>
+          <div style="font-size:.85rem;color:var(--muted)">Documentación oficial</div>
+        </div>
+      </div>
+      <nav>
+        <a href="./index.md">Inicio</a>
+        <a href="./architecture.md">Arquitectura</a>
+        <a href="./flow.md">Flujo</a>
+        <a href="./vps_documentation.md">VPS</a>
+        <a href="./en/homepage.html">EN</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <div>
+        <div class="card">
+          <h2>Todo lo necesario para desplegar, administrar y extender MeetLines</h2>
+          <p class="lead">Guías de inicio rápido, arquitectura modular, despliegue en VPS y patrones para integrar bots y notificaciones en tu negocio.</p>
+
+          <div class="features">
+            <div class="feature">
+              <h3>Arquitectura limpia</h3>
+              <p class="lead">Capas separadas para mayor testabilidad y mantenibilidad.</p>
+            </div>
+            <div class="feature">
+              <h3>Bots conversacionales</h3>
+              <p class="lead">Recepción, transacción, notificación y reactivación listos para integrar.</p>
+            </div>
+            <div class="feature">
+              <h3>Despliegue confiable</h3>
+              <p class="lead">Instrucciones para VPS, Nginx, Certbot y redes Docker optimizadas.</p>
+            </div>
+          </div>
+
+          <div class="cta">
+            <a class="button" href="./quickstart.md">Guía de inicio</a>
+            <a class="ghost" href="./vps_documentation.md">Despliegue en VPS</a>
+          </div>
+        </div>
+
+        <section style="margin-top:1.25rem">
+          <div class="card">
+            <h3>Contribuye</h3>
+            <p class="lead">¿Quieres ayudar a mejorar la documentación o el proyecto? Clona el repositorio y envía un PR con tus mejoras.</p>
+            <p style="font-size:.95rem;color:var(--muted)"><strong>Repositorio:</strong> <a style="color:#c7d2fe" href="#">(repo-url)</a></p>
+          </div>
+        </section>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Información rápida</h3>
+          <ul style="color:var(--muted);line-height:1.65">
+            <li><strong>API</strong> – ASP.NET Core</li>
+            <li><strong>DB</strong> – PostgreSQL central o por servicio</li>
+            <li><strong>Colas</strong> – Redis (opcional)</li>
+          </ul>
+          <div style="margin-top:1rem">
+            <a class="button" href="./architecture.md">Ver arquitectura</a>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem" class="card">
+          <h3>Contacto y Soporte</h3>
+          <p style="color:var(--muted)">Si necesitas ayuda, abre un issue en el repositorio o contacta al equipo.</p>
+          <a class="ghost" href="#">Abrir issue</a>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <small>&copy; 2025 MeetLines — Documentación del proyecto. &middot; Hecho con ❤️</small>
+    </footer>
+  </div>
+</body>
+</html>
