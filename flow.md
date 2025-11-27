@@ -1,4 +1,4 @@
-# Flujo de la aplicación MySaaSAgent
+# Flujo de la aplicación MeetLines
 
 Este documento describe el **flujo completo** que sigue la aplicación desde el registro del negocio hasta la fidelización del cliente, tal como se explicó en la solicitud del usuario.
 

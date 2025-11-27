@@ -1,4 +1,4 @@
-# Arquitectura de MySaaSAgent
+# Arquitectura de MeetLines
 
 Este proyecto sigue una **arquitectura hexagonal (Clean Architecture)** que separa claramente las responsabilidades en capas independientes:
 
@@ -37,11 +37,11 @@ flowchart LR
 ```bash
 # Clonar y restaurar dependencias
 git clone <repo-url>
-cd mySaaSAgent
+cd MeetLines
 dotnet restore
 
 # Ejecutar la API
-cd MySaaSAgent.API
+cd MeetLines.API
 dotnet run
 ```
 

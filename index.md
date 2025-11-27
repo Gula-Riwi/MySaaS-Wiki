@@ -8,9 +8,9 @@ editor: markdown
 dateCreated: 2025-11-26T22:37:06.556Z
 ---
 
-# Wiki de MySaaSAgent
+# Wiki de MeetLines
 
-Bienvenido a la documentación del proyecto **MySaaSAgent**. Esta wiki está organizada en varias secciones para facilitar la comprensión de la arquitectura, el flujo de la aplicación y los bots involucrados.
+Bienvenido a la documentación del proyecto **MeetLines**. Esta wiki está organizada en varias secciones para facilitar la comprensión de la arquitectura, el flujo de la aplicación y los bots involucrados.
 
 ## Índice
 

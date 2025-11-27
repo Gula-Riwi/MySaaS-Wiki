@@ -130,7 +130,7 @@ certbot --version
 Crear una red Docker compartida para todo el proyecto:
 
 ```bash
-docker network create mysaas-agent
+docker network create meetlines-agent
 ```
 
 Esta red permite que los contenedores de diferentes servicios se comuniquen entre sí.
@@ -260,7 +260,7 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     networks:
-      - mysaas-agent
+      - meetlines-agent
     restart: unless-stopped
 
     deploy:
@@ -280,7 +280,7 @@ services:
     volumes:
       - ./redis_data:/data
     networks:
-      - mysaas-agent
+      - meetlines-agent
     restart: unless-stopped
 
     deploy:
@@ -293,7 +293,7 @@ services:
         max-file: "5"
 
 networks:
-  mysaas-agent:
+  meetlines-agent:
     external: true
 ```
 
