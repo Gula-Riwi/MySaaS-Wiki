@@ -20,7 +20,7 @@ Comienza aquí para entender la arquitectura general y el flujo de la aplicació
 
 - [Arquitectura General](architecture.md) - Clean Architecture y patrones de diseño
 - [Flujo de la Aplicación](flow.md) - Diagrama de flujos y procesos
-- [Documentación VPS](vps_documentation.md) - Infraestructura y deployment
+- [Documentación VPS](MeetLines-Infrastructure/VPS-Documentation/documentacion-vps.md) - Infraestructura y deployment
 
 ---
 
@@ -90,6 +90,16 @@ Documentación técnica de la aplicación móvil (Kotlin + Jetpack Compose):
 
 ---
 
+## 🧱 Infrastructure - VPS
+
+Documentación técnica de la infraestructura del servidor y servicios compartidos:
+
+### Documentación General
+- **Español:** [Infraestructura y VPS](MeetLines-Infrastructure/VPS-Documentation/documentacion-vps.md)
+- **English:** [Infrastructure and VPS](MeetLines-Infrastructure/VPS-Documentation/en/vps-documentation.md)
+
+---
+
 ## 🗺️ Navegación Rápida
 
 | Sección | Propósito | Acceso |
@@ -100,7 +110,7 @@ Documentación técnica de la aplicación móvil (Kotlin + Jetpack Compose):
 | **Frontend** | Vue 3 Dashboard | [Meetlines-Frontend/](Meetlines-Frontend/Technical-Architecture/en/technical-architecture.md) |
 | **Users** | Spring Boot Auth | [MeetLines-Users/](MeetLines-Users/Technical-Architecture/en/technical-architecture.md) |
 | **Mobile** | Android App | [MeetLines-Mobile/](MeetLines-Mobile/Technical-Architecture/en/technical-architecture.md) |
-| **VPS** | Infraestructura | [vps_documentation.md](vps_documentation.md) |
+| **VPS** | Infraestructura | [MeetLines-Infrastructure/](MeetLines-Infrastructure/VPS-Documentation/documentacion-vps.md) |
 
 ---
 
@@ -123,7 +133,7 @@ Documentación técnica de la aplicación móvil (Kotlin + Jetpack Compose):
 
 **🚀 DevOps/Infrastructure**
 1. Lee [Deployment Guide](MeetLines-Backend/Deployment-Guide/en/deployment-guide.md)
-2. Consulta [VPS Documentation](vps_documentation.md)
+2. Consulta [VPS Documentation](MeetLines-Infrastructure/VPS-Documentation/en/vps-documentation.md)
 
 ---
 
