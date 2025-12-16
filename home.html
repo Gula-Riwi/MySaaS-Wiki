@@ -54,9 +54,10 @@ dateCreated: 2025-11-27T22:01:48.859Z
         </div>
       </div>
       <nav>
-        <a href="./index.md">Inicio</a>
+        <a href="./index.md">Documentación</a>
         <a href="./architecture.md">Arquitectura</a>
-        <a href="./flow.md">Flujo</a>
+        <a href="./MeetLines-Backend/Technical-Architecture/en/technical-architecture.md">Backend</a>
+        <a href="./Meetlines-Frontend/Technical-Architecture/en/technical-architecture.md">Frontend</a>
         <a href="./vps_documentation.md">VPS</a>
         <a href="../en/homepage.html">EN</a>
       </nav>
@@ -65,27 +66,39 @@ dateCreated: 2025-11-27T22:01:48.859Z
     <main class="hero">
       <div>
         <div class="card">
-          <h2>Todo lo necesario para desplegar, administrar y extender MeetLines</h2>
-          <p class="lead">Guías de inicio rápido, arquitectura modular, despliegue en VPS y patrones para integrar bots y notificaciones en tu negocio.</p>
+          <h2>Documentación completa para desplegar, administrar y extender MeetLines</h2>
+          <p class="lead">Acceso a arquitectura modular, guías detalladas por repositorio, despliegue en VPS, patrones de desarrollo y referencias de API completas para los 4 componentes principales.</p>
 
           <div class="features">
             <div class="feature">
-              <h3>Arquitectura limpia</h3>
-              <p class="lead">Capas separadas para mayor testabilidad y mantenibilidad.</p>
+              <h3>🔵 Backend ASP.NET</h3>
+              <p class="lead">API principal con Clean Architecture, autenticación OAuth2, y documentación Swagger completa.</p>
             </div>
             <div class="feature">
-              <h3>Bots conversacionales</h3>
-              <p class="lead">Recepción, transacción, notificación y reactivación listos para integrar.</p>
+              <h3>🟢 Frontend Vue 3</h3>
+              <p class="lead">Dashboard de negocios con Vite, Pinia, Tailwind CSS y gestión completa de proyectos.</p>
+            </div>
+            <div class="feature">
+              <h3>🟡 Users Spring Boot</h3>
+              <p class="lead">Microservicio de autenticación con Keycloak, OAuth2 (Discord, Facebook, Google) y JWT.</p>
+            </div>
+            <div class="feature">
+              <h3>🟣 Mobile Kotlin</h3>
+              <p class="lead">App Android con Jetpack Compose, MVVM, Room database y Hilt dependency injection.</p>
+            </div>
+            <div class="feature">
+              <h3>Arquitectura limpia</h3>
+              <p class="lead">Capas separadas (API → Application → Domain → Infrastructure) para mayor testabilidad y mantenibilidad.</p>
             </div>
             <div class="feature">
               <h3>Despliegue confiable</h3>
-              <p class="lead">Instrucciones para VPS, Nginx, Certbot y redes Docker optimizadas.</p>
+              <p class="lead">Instrucciones para VPS, Nginx, Let's Encrypt SSL, Docker Compose y monitoreo de producción.</p>
             </div>
           </div>
 
           <div class="cta">
-            <a class="button" href="./quickstart.md">Guía de inicio</a>
-            <a class="ghost" href="./vps_documentation.md">Despliegue en VPS</a>
+            <a class="button" href="./index.md">Explorar documentación</a>
+            <a class="ghost" href="./MeetLines-Backend/Setup-Guide/en/setup-guide.md">Comenzar Backend</a>
           </div>
         </div>
 
@@ -100,21 +113,34 @@ dateCreated: 2025-11-27T22:01:48.859Z
 
       <aside>
         <div class="card">
-          <h3>Información rápida</h3>
-          <ul style="color:var(--muted);line-height:1.65">
-            <li><strong>API</strong> – ASP.NET Core</li>
-            <li><strong>DB</strong> – PostgreSQL central o por servicio</li>
-            <li><strong>Colas</strong> – Redis (opcional)</li>
+          <h3>Acceso rápido por rol</h3>
+          <ul style="color:var(--muted);line-height:1.8;list-style:none;padding:0">
+            <li><strong>👨‍💻 Backend</strong><br><a style="color:#c7d2fe;font-size:.9rem" href="./MeetLines-Backend/Setup-Guide/en/setup-guide.md">Setup →</a></li>
+            <li><strong>🎨 Frontend</strong><br><a style="color:#c7d2fe;font-size:.9rem" href="./Meetlines-Frontend/Setup-Guide/en/setup-guide.md">Setup →</a></li>
+            <li><strong>📱 Mobile</strong><br><a style="color:#c7d2fe;font-size:.9rem" href="./MeetLines-Mobile/Setup-Guide/en/setup-guide.md">Setup →</a></li>
+            <li><strong>🚀 DevOps</strong><br><a style="color:#c7d2fe;font-size:.9rem" href="./MeetLines-Backend/Deployment-Guide/en/deployment-guide.md">Deploy →</a></li>
           </ul>
           <div style="margin-top:1rem">
-            <a class="button" href="./architecture.md">Ver arquitectura</a>
+            <a class="button" href="./index.md">Índice completo</a>
           </div>
         </div>
 
         <div style="margin-top:1rem" class="card">
-          <h3>Contacto y Soporte</h3>
-          <p style="color:var(--muted)">Si necesitas ayuda, abre un issue en el repositorio o contacta al equipo.</p>
-          <a class="ghost" href="#">Abrir issue</a>
+          <h3>Stack tecnológico</h3>
+          <ul style="color:var(--muted);font-size:.95rem;line-height:1.6;margin:0;padding:0;list-style:none">
+            <li><strong>Backend:</strong> ASP.NET Core 8</li>
+            <li><strong>Frontend:</strong> Vue 3 + Vite</li>
+            <li><strong>Auth:</strong> Spring Boot + Keycloak</li>
+            <li><strong>Mobile:</strong> Kotlin + Compose</li>
+            <li><strong>Database:</strong> PostgreSQL 15+</li>
+            <li><strong>Infra:</strong> Docker + Nginx</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:1rem" class="card">
+          <h3>Recursos</h3>
+          <p style="color:var(--muted);font-size:.95rem">Swagger API, repositorios GitHub y documentación detallada para cada componente.</p>
+          <a class="ghost" href="./index.md">Ver todos los recursos →</a>
         </div>
       </aside>
     </main>
